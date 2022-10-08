@@ -1,0 +1,70 @@
+<section>
+  <div class="container-fluid game">
+    <h1 class="text-center text-white">♠ Blackjack</h1>
+    <div class="container mx-auto py-3 row">
+      <div class="col-12 d-flex justify-content-center">
+        <button *ngIf="show" class="btn" (click)="restart()">Restart</button>
+      </div>
+    </div>
+    <div class="text-center">
+      <h1 class="ml-4 font-bold text-3xl text-white">
+        {{ messageWinner }}
+      </h1>
+    </div>
+    <hr class="text-white" *ngIf="show" />
+    <app-dealer *ngIf="show"></app-dealer>
+    <div class="container mx-auto">
+      <h2 *ngIf="show" class="text-center text-white crupier-hand">
+        Dealer's Hand
+      </h2>
+      <div class="container mx-auto py-3 row">
+        <div class="col-12 d-flex justify-content-center">
+          <p *ngIf="show" class="text-white text-center point-player py-2">
+            Points: {{ pointsDealer }}
+          </p>
+        </div>
+      </div>
+      <div class="row py-4 text-center justify-content-center">
+        <div class="col-2" *ngFor="let card of deckDealer">
+          <img
+            *ngIf="show"
+            src="https://raw.githubusercontent.com/ginosoler11/images/f9b1e8e69a84530d32d2fe5cd21a1431444f8004/images/{{
+              card.palo + card.card
+            }}.png"
+            class="text-white carta"
+          />
+        </div>
+      </div>
+
+      <h2 *ngIf="show" class="text-center text-white player-hand">
+        Player's Hand
+      </h2>
+
+      <div class="container mx-auto py-3 row">
+        <div class="col-12 d-flex justify-content-center">
+          <p *ngIf="show" class="text-white text-center point-player py-2">
+            Points: {{ pointsPlayer }}
+          </p>
+        </div>
+      </div>
+      <div class="row py-4 text-center justify-content-center">
+        <div class="col-2" *ngFor="let card of deckPlayer">
+          <img
+            *ngIf="show"
+            class="text-white carta"
+            src="https://raw.githubusercontent.com/ginosoler11/images/f9b1e8e69a84530d32d2fe5cd21a1431444f8004/images/{{
+              card.palo + card.card
+            }}.png"
+          />
+        </div>
+      </div>
+    </div>
+    <app-player
+      (onHit)="showCard(true); hitCard()"
+      (onNewGame)="restart()"
+      [play]="play"
+      (onStand)="dealer()"
+    >
+    </app-player>
+  </div>
+</section>

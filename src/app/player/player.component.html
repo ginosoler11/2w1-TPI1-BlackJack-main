@@ -1,0 +1,17 @@
+<section>
+  <div class="container-fluid">
+    <div class="container mx-auto py-3 row">
+      <div class="col-12 d-flex justify-content-center">
+        <button *ngIf="play" class="btn mx-3 px-4" (click)="hit()">
+          Hit <i class="fa-solid fa-plus icon-plus"></i>
+        </button>
+        <button *ngIf="!play" class="btn mx-auto px-4" (click)="newGame()">
+          Start Game
+        </button>
+        <button *ngIf="play" class="btn px-4" (click)="stand()">
+          Stand <i class="fa-solid fa-hand icon-hand"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
